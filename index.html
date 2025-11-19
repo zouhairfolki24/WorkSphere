@@ -9,7 +9,62 @@
 </head>
 <body>
     
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="brand">
+                <h1>WorkSphere</h1>
+                <p class="subtitle">Planification du personnel</p>
+            </div>
 
-    
+            <section class="panel">
+                <h2>Personnel non affecté</h2>
+
+                <button class="btn-primary" id="openEmployeeModal">Ajouter un employé</button>
+
+                <ul class="staff-list">
+                    <li class="staff-card placeholder">
+                        Aucun employé pour le moment – cette liste sera remplie plus tard.
+                    </li>
+                </ul>
+            </section>
+        </aside>
+
+        <main class="main">
+            <header class="main-header">
+                <h2>Plan d'étage du bureau</h2>
+                <p class="hint">
+                    Chaque zone colorée représente une zone (Salle de conférence, Réception, Salle des serveurs,
+                    Salle de sécurité, Salle du personnel, Salle d’archives).
+                </p>
+            </header>
+
+            <section class="floor-plan">
+                <div class="zone zone-conference">
+                    <h3>Salle de conférence</h3>
+                </div>
+
+                <div class="zone zone-reception">
+                    <h3>Reception</h3>
+                </div>
+
+                <div class="zone zone-servers">
+                    <h3>Salle des serveurs</h3>
+                </div>
+
+                <div class="zone zone-security">
+                    <h3>Salle de sécurité</h3>
+                </div>
+
+                <div class="zone zone-personnel">
+                    <h3>Salle du personnel</h3>
+                </div>
+
+                <div class="zone zone-archives">
+                    <h3>Salle d’archives</h3>
+                </div>
+            </section>
+        </main>
+    </div>
+
 </body>
 </html>
