@@ -120,6 +120,15 @@ body {
     grid-template-rows: repeat(40, 1fr);
 }
 
+.zone-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    justify-content: center;
+}
+
+
 .zone-conference {
     grid-column: 1/46;
     grid-row: 1/14;
@@ -369,4 +378,23 @@ body {
     padding-left: 18px;
     font-size: 0.78rem;
     color: #9ca3af;
+}
+
+
+/* Style buttons */
+
+.zone-add-btn {
+    margin-top: 8px;              
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #007bff;   
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
