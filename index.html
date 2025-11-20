@@ -67,5 +67,58 @@
         </main>
     </div>
 
+     <div class="modal-overlay" id="employeeModal">
+        <div class="modal">
+            <header class="modal-header">
+                <h2>Ajouter un employé</h2>
+                <button class="modal-close" id="closeEmployeeModal" aria-label="Fermer">&times;</button>
+            </header>
+
+            <form id="employeeForm" class="modal-body">
+                <div class="form-group">
+                    <label for="employeeName">Nom</label>
+                    <input type="text" id="employeeName" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="employeeRole">Rôle</label>
+                    <input type="text" id="employeeRole" placeholder="Ex : Agent de sécurité" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="employeePhoto">URL photo</label>
+                    <input type="url" id="employeePhoto" placeholder="https://exemple.com/photo.jpg" />
+                </div>
+
+                <div class="form-group">
+                    <label for="employeeEmail">Email</label>
+                    <input type="email" id="employeeEmail" placeholder="nom.prenom@entreprise.com" />
+                </div>
+
+                <div class="form-group">
+                    <label for="employeePhone">Téléphone</label>
+                    <input type="tel" id="employeePhone" placeholder="+212 6 XX XX XX XX" />
+                </div>
+
+                <div class="form-group">
+                    <label>Expériences</label>
+
+                    <div id="experiencesContainer" class="experience-list">
+                        <!-- Les champs d'expérience seront ajoutés dynamiquement -->
+                    </div>
+
+                    <button type="button" class="btn-secondary" id="addExperience">
+                        + Ajouter une expérience
+                    </button>
+                </div>
+
+                <footer class="modal-footer">
+                    <button type="button" class="btn-ghost" id="cancelEmployeeModal">Annuler</button>
+                    <button type="submit" class="btn-primary">Enregistrer</button>
+                </footer>
+            </form>
+        </div>
+    </div>
+
 </body>
 </html>
