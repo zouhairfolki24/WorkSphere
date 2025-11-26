@@ -9,6 +9,8 @@ const openBtn = document.getElementById("openForm");
       document.getElementById("experienceList").innerHTML = "";
     };
     
+    
+    
     const experienceList = document.getElementById("experienceList");
     const addExperienceBtn = document.getElementById("addExperience");
 
