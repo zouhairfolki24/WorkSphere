@@ -6,10 +6,55 @@
     <script src="https://cdn.tailwindcss.com"></script> 
     <title>Gestion Workspace</title>
 </head>
-<body>
-    
+<body class="flex min-h-screen">
+  
+  <section class="flex flex-col items-center justify-start bg-zinc-800 p-8 w-72 gap-4">
+    <button id="openForm" class="bg-blue-600 text-white font-bold px-6 py-3 rounded hover:bg-blue-700">
+      Ajouter un employe
+    </button>
 
-    
+    <div id="profileContainer" class="w-full flex flex-col gap-3"></div>
+  </section>
+
+ 
+  <section class="workspace relative flex-1">
+    <img src="plan.jpg" 
+         class="min-h-screen w-full object-cover" alt="Office Plan" />
+
+    <div class="chambers absolute top-0 left-0 w-full h-full">
+      <div class="conference bg-green-600/50 flex justify-center items-center relative" data-room="conference">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 z-10">+</button>
+        <div class="badges-container"></div>
+      </div>
+      
+      <div class="serveurs bg-yellow-600/50 flex justify-center items-center relative" data-room="serveurs">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 z-10">+</button>
+        <div class="badges-container"></div>
+      </div>
+      
+      <div class="security bg-red-600/50 flex justify-center items-center relative" data-room="security">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 z-10">+</button>
+        <div class="badges-container"></div>
+      </div>
+      
+      <div class="reception bg-blue-600/50 flex justify-center items-center relative" data-room="reception">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 z-10">+</button>
+        <div class="badges-container"></div>
+      </div>
+      
+      <div class="personel bg-green-600/50 flex justify-center items-center relative" data-room="personel">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 z-10">+</button>
+        <div class="badges-container"></div>
+      </div>
+      
+      <div class="archive bg-gray-600/50 flex justify-center items-center relative" data-room="archive">
+        <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 z-10">+</button>
+        <div class="badges-container"></div>
+      </div>
+    </div>
+  </section>
+
+
   <script src="script.js"></script>
 </body>
 </html>
