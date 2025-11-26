@@ -86,4 +86,13 @@ const openBtn = document.getElementById("openForm");
         phone: document.getElementById("tele").value,
         experiences
       };
+
+      employees.push(employee);
+      localStorage.setItem("employees", JSON.stringify(employees));
+
+      refreshEmployeeList();
+
+      popup.classList.add("hidden");
+      this.reset();
+      experienceList.innerHTML = "";
     });
