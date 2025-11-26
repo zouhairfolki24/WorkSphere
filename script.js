@@ -155,3 +155,76 @@ const openBtn = document.getElementById("openForm");
     }
 
     renderRoomBadges();
+
+     document.querySelectorAll(".chambers button").forEach(btn => {
+      btn.onclick = () => {
+        const room = btn.parentElement.dataset.room;
+        const roomNames = {
+          'conference': 'Conférence',
+          'serveurs': 'Serveurs',
+          'security': 'Sécurité',
+          'reception': 'Réception',
+          'personel': 'Personnel',
+          'archive': 'Archive'
+        };
+
+        const modal = document.createElement("div");
+        modal.className = "fixed inset-0 bg-black/60 flex justify-center items-center z-50";
+
+        modal.innerHTML = `
+          <div class="bg-zinc-700 p-6 rounded w-96 max-h-[500px] overflow-auto">
+            <h2 class="text-white text-xl font-bold mb-4">Salle: ${roomNames[room]}</h2>
+            <p class="text-gray-300 text-sm mb-4">Employés autorisés à entrer</p>
+            <div id="authList" class="flex flex-col gap-3"></div>
+            <button class="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 w-full close">
+              Fermer
+            </button>
+          </div>
+        `;
+
+        const authList = modal.querySelector("#authList");
+        let hasAuthorized = false;
+
+        employees.forEach(emp => {
+          if (canEnter(emp.role, room)) {
+            hasAuthorized = true;
+            const card = document.createElement("div");
+            card.className = "bg-zinc-600 p-3 rounded text-white flex items-center justify-between";
+
+            card.innerHTML = `
+              <div class="flex items-center gap-3">
+                <img src="${emp.pic || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(emp.name)}" 
+                     class="w-10 h-10 rounded-full object-cover">
+                <div>
+                  <p class="font-bold">${emp.name}</p>
+                  <p class="text-xs opacity-60">${emp.role}</p>
+                </div>
+              </div>
+              <button class="bg-blue-600 px-3 py-1 rounded hover:bg-blue-700 enter">Entrer</button>
+            `;
+
+            card.querySelector(".enter").onclick = () => {
+              rooms[room] = rooms[room] || [];
+              rooms[room].push(emp);
+              localStorage.setItem("rooms", JSON.stringify(rooms));
+
+              employees = employees.filter(e => e.id !== emp.id);
+              localStorage.setItem("employees", JSON.stringify(employees));
+
+              refreshEmployeeList();
+              renderRoomBadges();
+              modal.remove();
+            };
+
+            authList.appendChild(card);
+          }
+        });
+
+        if (!hasAuthorized) {
+          authList.innerHTML = '<p class="text-gray-400 text-center py-4">Aucun employé autorisé disponible</p>';
+        }
+
+        modal.querySelector(".close").onclick = () => modal.remove();
+        document.body.appendChild(modal);
+      };
+    });
