@@ -96,3 +96,26 @@ const openBtn = document.getElementById("openForm");
       this.reset();
       experienceList.innerHTML = "";
     });
+
+
+    function canEnter(role, room) {
+      const r = role.toLowerCase();
+
+      if (r === "manager") return true;
+      if (r === "nettoyage" && room === "archive") return false;
+      if (r === "nettoyage") return true;
+
+      const rules = {
+        "reception": ["manager","receptionnistes"],
+        "serveurs": ["manager","techniciens"],
+        "security": ["manager","securite"],
+        "conference": ["manager", "nettoyage", "invite"],
+        "personel": ["manager", "nettoyage", "invite"],
+        "archive": ["manager"]
+      };
+
+      if (!rules[room]) return true;
+      return rules[room].includes(r);
+    }
+
+    
