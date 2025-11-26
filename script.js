@@ -66,3 +66,24 @@ const openBtn = document.getElementById("openForm");
     }
 
     refreshEmployeeList();
+
+    document.querySelector("form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const experienceBlocks = document.querySelectorAll("#experienceList > div");
+      const experiences = [...experienceBlocks].map(exp => ({
+        titre: exp.querySelector(".exp-title").value,
+        debut: exp.querySelector(".exp-start").value,
+        fin: exp.querySelector(".exp-end").value,
+      }));
+
+      const employee = {
+        id: Date.now(),
+        name: document.getElementById("name").value,
+        role: document.getElementById("room").value,
+        pic: document.getElementById("pic").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("tele").value,
+        experiences
+      };
+    });
