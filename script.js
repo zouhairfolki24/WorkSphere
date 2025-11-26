@@ -41,3 +41,28 @@ const openBtn = document.getElementById("openForm");
 
     let employees = JSON.parse(localStorage.getItem("employees") || "[]");
     let rooms = JSON.parse(localStorage.getItem("rooms") || "{}");
+
+    const profileContainer = document.getElementById("profileContainer");
+  
+    function renderEmployee(emp) {
+      const card = document.createElement("div");
+      card.className = "bg-zinc-700 text-white p-4 rounded flex items-center gap-3 shadow cursor-pointer hover:bg-zinc-600";
+
+      card.innerHTML = `
+        <img src="${emp.pic || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(emp.name)}"
+             class="w-12 h-12 rounded-full object-cover">
+        <div>
+          <h3 class="font-bold text-lg">${emp.name}</h3>
+          <p class="text-sm opacity-80">${emp.role}</p>
+        </div>
+      `;
+
+      profileContainer.appendChild(card);
+    }
+
+    function refreshEmployeeList() {
+      profileContainer.innerHTML = "";
+      employees.forEach(renderEmployee);
+    }
+
+    refreshEmployeeList();
