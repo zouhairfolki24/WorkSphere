@@ -118,4 +118,40 @@ const openBtn = document.getElementById("openForm");
       return rules[room].includes(r);
     }
 
-    
+
+    function renderRoomBadges() {
+      document.querySelectorAll(".chambers > div").forEach(zone => {
+        const room = zone.dataset.room;
+        const container = zone.querySelector(".badges-container");
+        container.innerHTML = "";
+
+        const inside = rooms[room] || [];
+
+        inside.forEach(emp => {
+          const badge = document.createElement("div");
+          badge.className = "badge bg-white rounded-full shadow flex items-center gap-2";
+
+          badge.innerHTML = `
+            <img src="${emp.pic || 'https://ui-avatars.com/api/?name=' + encodeURIComponent(emp.name)}" 
+                 class="w-8 h-8 rounded-full object-cover">
+            <span class="text-black text-sm font-medium">${emp.name}</span>
+            <button class="text-red-600 font-bold hover:text-red-800 remove">×</button>
+          `;
+
+          badge.querySelector(".remove").onclick = () => {
+            rooms[room] = rooms[room].filter(e => e.id !== emp.id);
+            localStorage.setItem("rooms", JSON.stringify(rooms));
+
+            employees.push(emp);
+            localStorage.setItem("employees", JSON.stringify(employees));
+
+            refreshEmployeeList();
+            renderRoomBadges();
+          };
+
+          container.appendChild(badge);
+        });
+      });
+    }
+
+    renderRoomBadges();
