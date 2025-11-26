@@ -38,3 +38,6 @@ const openBtn = document.getElementById("openForm");
       expDiv.querySelector(".removeExp").onclick = () => expDiv.remove();
       experienceList.appendChild(expDiv);
     };
+
+    let employees = JSON.parse(localStorage.getItem("employees") || "[]");
+    let rooms = JSON.parse(localStorage.getItem("rooms") || "{}");
